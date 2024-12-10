@@ -27,28 +27,12 @@ export default function GastronomyHighlight() {
             className="relative z-10"
           >
             <h2 className="font-display text-4xl lg:text-5xl text-primary mb-6">
-              Gastronomía en las Alturas
+              Experiencias Culinarias Únicas
             </h2>
             <p className="text-gray-600 mb-8 text-lg">
-              Donde la cocina de altura se encuentra con paisajes majestuosos. 
-              Cada plato está inspirado en la grandeza de la cordillera, 
-              utilizando ingredientes locales que cuentan la historia de estas tierras.
+              Descubre una propuesta gastronómica que fusiona tradición y modernidad, 
+              creando momentos memorables en entornos extraordinarios.
             </p>
-            
-            <div className="space-y-4 mb-8">
-              <div className="flex items-center gap-3">
-                <span className="w-2 h-2 bg-primary rounded-full"></span>
-                <span className="text-gray-700">Ingredientes de altura cultivados sobre los 2.000 metros</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <span className="w-2 h-2 bg-primary rounded-full"></span>
-                <span className="text-gray-700">Técnicas ancestrales de cocina andina</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <span className="w-2 h-2 bg-primary rounded-full"></span>
-                <span className="text-gray-700">Maridaje con vinos de viñedos de montaña</span>
-              </div>
-            </div>
 
             <div className="flex gap-4">
               <motion.button
