@@ -1,103 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Brand styles... */
-/* Previous brand styles remain unchanged */
-
-/* 3D Flip Card Effects */
-.flip-card-container {
-  perspective: 1000px;
-  height: 400px;
-}
-
-.flip-card {
+/* Brand Container and Effects */
+.brand-container {
   position: relative;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
-  cursor: pointer;
-}
-
-.flip-card-container:hover .flip-card {
-  transform: rotateY(180deg);
-}
-
-.flip-card-front,
-.flip-card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  border-radius: 1rem;
+  padding: 0.5rem;
+  width: fit-content;
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
-.flip-card-front {
-  background-color: white;
+.brand-content {
+  position: relative;
+  z-index: 1;
 }
 
-.flip-card-back {
-  background-color: white;
-  transform: rotateY(180deg);
+.brand-text-wrapper {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* Add smooth hover transitions */
-.flip-card-container::after {
+.brand-main-text {
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  color: #1B4D3E;
+  letter-spacing: 0.25em;
+  line-height: 1.1;
+  text-align: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 0.1em;
+  margin-bottom: 0.5rem;
+  position: relative;
+}
+
+.brand-letter {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.brand-sub-text {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  color: #4a4a4a;
+  text-transform: uppercase;
+  text-align: center;
+  width: 100%;
+  line-height: 1.2;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  position: relative;
+}
+
+/* Hover effects */
+.brand-container:hover .brand-letter {
+  color: #2D6A4F;
+  transition: color 0.3s ease;
+}
+
+.brand-container:hover .brand-sub-text {
+  color: #1B4D3E;
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+  .brand-main-text {
+    font-size: 1.875rem;
+  }
+  
+  .brand-sub-text {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .brand-main-text {
+    font-size: 1.5rem;
+  }
+  
+  .brand-sub-text {
+    font-size: 0.6rem;
+  }
+}
+
+/* Shine effect */
+.brand-main-text::after {
   content: '';
   position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: radial-gradient(
-    circle at center,
-    rgba(27, 77, 62, 0.1) 0%,
-    transparent 70%
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
   );
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  animation: shine 3s infinite;
 }
 
-.flip-card-container:hover::after {
-  opacity: 1;
-}
-
-/* Add floating animation */
-@keyframes float {
+@keyframes shine {
   0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
+    left: -100%;
+    width: 100%;
   }
   100% {
-    transform: translateY(0px);
+    left: 100%;
+    width: 100%;
   }
-}
-
-.flip-card-container:hover {
-  animation: float 3s ease-in-out infinite;
-}
-
-/* Add subtle glow effect */
-.flip-card::before {
-  content: '';
-  position: absolute;
-  inset: -10px;
-  z-index: -1;
-  background: radial-gradient(
-    circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-    rgba(27, 77, 62, 0.15) 0%,
-    transparent 50%
-  );
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  border-radius: 1rem;
-}
-
-.flip-card:hover::before {
-  opacity: 1;
 }
 
 /* Rest of existing styles */

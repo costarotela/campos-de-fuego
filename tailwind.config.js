@@ -7,11 +7,13 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: "#1B4D3E", // Actualizado a English Green
+        primary: "#1B4D3E", // English Green
+        secondary: "#2D6A4F", // Darker shade
+        neutral: "#4a4a4a", // Medium Gray
       },
       fontFamily: {
         sans: ['Montserrat', 'sans-serif'],
-        display: ['Playfair Display', 'serif'],
+        display: ['Cinzel', 'serif'],
       }
     },
   },
