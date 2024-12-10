@@ -31,4 +31,3 @@ yarn-error.log*
 *.sln
 *.sw?
 # parrilas-al-extremo
-# campos-de-fuego

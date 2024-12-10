@@ -19,7 +19,7 @@
   z-index: 2;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centra los elementos horizontalmente */
+  align-items: center;
 }
 
 .brand-main-text {
@@ -27,22 +27,22 @@
   font-size: 1.75rem;
   font-weight: 800;
   color: #1B4D3E;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.15em;
   line-height: 1.1;
   text-align: center;
+  width: 100%;
 }
 
 .brand-sub-text {
   font-family: 'Playfair Display', serif;
   font-size: 0.6rem;
   font-weight: 500;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.2em;
   color: #2D6A4F;
   margin-top: 0.1rem;
   text-transform: uppercase;
   text-align: center;
   width: 100%;
-  max-width: fit-content; /* Se ajusta al contenido */
   line-height: 1;
 }
 
@@ -54,7 +54,6 @@
   
   .brand-sub-text {
     font-size: 0.65rem;
-    letter-spacing: 0.09em;
   }
 }
 
@@ -62,5 +61,3 @@
 body {
   @apply bg-white text-gray-800;
 }
-
-/* ... rest of the CSS ... */
