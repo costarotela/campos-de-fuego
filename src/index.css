@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Brand Container and Effects */
+.brand-container {
+  position: relative;
+  padding: 0.5rem;
+  width: fit-content;
+}
+
+.brand-content {
+  position: relative;
+  z-index: 1;
+}
+
+.brand-text-wrapper {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra los elementos horizontalmente */
+}
+
+.brand-main-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #1B4D3E;
+  letter-spacing: 0.05em;
+  line-height: 1.1;
+  text-align: center;
+}
+
+.brand-sub-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: #2D6A4F;
+  margin-top: 0.1rem;
+  text-transform: uppercase;
+  text-align: center;
+  width: 100%;
+  max-width: fit-content; /* Se ajusta al contenido */
+  line-height: 1;
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+  .brand-main-text {
+    font-size: 1.875rem;
+  }
+  
+  .brand-sub-text {
+    font-size: 0.65rem;
+    letter-spacing: 0.09em;
+  }
+}
+
+/* Rest of existing styles */
+body {
+  @apply bg-white text-gray-800;
+}
+
+/* ... rest of the CSS ... */
