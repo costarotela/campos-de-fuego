@@ -1,18 +1,12 @@
-import { motion, AnimatePresence } from 'framer-motion';
-import { useTranslation } from 'react-i18next';
+import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
-import { FiX, FiClock, FiMapPin, FiAward } from 'react-icons/fi';
+import { FiMapPin, FiCalendar, FiUsers } from 'react-icons/fi';
 
 export default function GastronomyHighlight() {
-  const { t } = useTranslation();
   const navigate = useNavigate();
-  const [showModal, setShowModal] = useState(false);
-
-  // ... (HeightMenuModal permanece igual) ...
 
   return (
-    <section className="relative min-h-screen bg-gray-50 overflow-hidden">
+    <section className="relative py-20 bg-gray-50 overflow-hidden">
       <div className="absolute inset-0">
         <img 
           src="https://images.unsplash.com/photo-1589302168068-964664d93dc0?auto=format&fit=crop&q=80" 
@@ -22,7 +16,7 @@ export default function GastronomyHighlight() {
         <div className="absolute inset-0 bg-gradient-to-b from-gray-50/50 via-transparent to-gray-50/50" />
       </div>
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Contenido izquierdo */}
           <motion.div
@@ -60,18 +54,18 @@ export default function GastronomyHighlight() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => setShowModal(true)}
+                onClick={() => navigate('/menu')}
                 className="bg-primary text-white px-8 py-3 rounded-md text-lg hover:bg-primary/90 transition-colors"
               >
-                Descubrir Menú de Altura
+                Ver Menú
               </motion.button>
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => navigate('/menu')}
+                onClick={() => navigate('/locations')}
                 className="border-2 border-primary text-primary px-8 py-3 rounded-md text-lg hover:bg-primary/5 transition-colors"
               >
-                Ver Menú Completo
+                Explorar Destinos
               </motion.button>
             </div>
           </motion.div>
@@ -121,7 +115,7 @@ export default function GastronomyHighlight() {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  onClick={() => setShowModal(true)}
+                  onClick={() => navigate('/menu')}
                   className="text-primary hover:underline underline-offset-4"
                 >
                   Ver detalles →
@@ -131,11 +125,6 @@ export default function GastronomyHighlight() {
           </motion.div>
         </div>
       </div>
-
-      {/* Modal del Menú de Altura */}
-      <AnimatePresence>
-        {showModal && <HeightMenuModal />}
-      </AnimatePresence>
     </section>
   );
 }

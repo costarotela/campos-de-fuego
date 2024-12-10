@@ -1,9 +1,32 @@
 import { useNavigate } from 'react-router-dom';
 import { FiMapPin, FiCalendar, FiUsers, FiClock, FiAward, FiArrowRight } from 'react-icons/fi';
 import { motion } from 'framer-motion';
+import { useEffect } from 'react';
 
 export default function Hero() {
   const navigate = useNavigate();
+
+  // Add mouse tracking for glow effect
+  const updateMousePosition = (e, card) => {
+    const rect = card.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    card.style.setProperty('--mouse-x', `${x}%`);
+    card.style.setProperty('--mouse-y', `${y}%`);
+  };
+
+  useEffect(() => {
+    const cards = document.querySelectorAll('.flip-card');
+    cards.forEach(card => {
+      card.addEventListener('mousemove', (e) => updateMousePosition(e, card));
+    });
+
+    return () => {
+      cards.forEach(card => {
+        card.removeEventListener('mousemove', (e) => updateMousePosition(e, card));
+      });
+    };
+  }, []);
 
   const dishes = [
     {
@@ -33,7 +56,7 @@ export default function Hero() {
   ];
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gray-50">
+    <section className="relative min-h-[calc(100vh-5rem)] flex items-center justify-center overflow-hidden bg-gray-50">
       {/* Background Image */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-gray-50/90" />
@@ -45,7 +68,7 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-b from-gray-50/50 via-transparent to-gray-50/50" />
       </div>
       
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div className="text-gray-800">
@@ -135,9 +158,9 @@ export default function Hero() {
                       <img
                         src={dish.image}
                         alt={dish.title}
-                        className="w-full h-full object-cover rounded-lg"
+                        className="w-full h-full object-cover"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent rounded-lg" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
                       
                       <div className="absolute top-4 right-4">
                         <span className="bg-primary/90 text-white px-4 py-2 rounded-full text-sm">
@@ -158,7 +181,7 @@ export default function Hero() {
 
                   {/* Back Side */}
                   <div className="flip-card-back">
-                    <div className="p-6 h-full flex flex-col bg-white/95 backdrop-blur-sm rounded-lg">
+                    <div className="p-6 h-full flex flex-col bg-white/95 backdrop-blur-sm">
                       <h3 className="font-display text-xl text-primary mb-4">{dish.title}</h3>
                       
                       <div className="space-y-4 flex-grow">
@@ -194,6 +217,6 @@ export default function Hero() {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
